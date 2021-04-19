@@ -1,8 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 
-//�������
+//数据溢出
 
+//究其根源，是因为栈区分配时地址由高到低，而数组分配时随着下标增大，地址由低到高
 //int main() {
 //	int i = 0;
 //	int arr[] = { 1,2,3,4,5 };
@@ -13,7 +14,7 @@
 //	return 0;
 //}
 
-//�׳����
+//阶乘求和
 
 //int main() {
 //	int i = 0;
