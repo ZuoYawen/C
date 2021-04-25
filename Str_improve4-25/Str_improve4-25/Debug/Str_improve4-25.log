@@ -1,0 +1,3 @@
+﻿  test.c
+C:\Users\DeLL\Desktop\study\code\Str_improve4-25\Str_improve4-25\test.c(30,1): warning C4090: “初始化”: 不同的“const”限定符
+  Str_improve4-25.vcxproj -> C:\Users\DeLL\Desktop\study\code\Str_improve4-25\Debug\Str_improve4-25.exe
