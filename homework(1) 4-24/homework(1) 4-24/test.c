@@ -1,10 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
-
+//homework
 int main()
 {
-	////Ò»Î¬Êı×é
+	////ä¸€ç»´æ•°ç»„
 	//int a[] = { 1,2,3,4 };
 	//printf("%d\n", sizeof(a));    //16
 	//printf("%d\n", sizeof(a + 0));    //4
@@ -18,7 +18,7 @@ int main()
 	//printf("%d\n", sizeof(&a[0] + 1));    //4
 
 
-	//×Ö·ûÊı×é
+	//å­—ç¬¦æ•°ç»„
 	//char arr[] = { 'a','b','c','d','e','f' };
 	//printf("%d\n", sizeof(arr));    //6
 	//printf("%d\n", sizeof(arr + 0));    //6
@@ -27,11 +27,11 @@ int main()
 	//printf("%d\n", sizeof(&arr));    //24
 	//printf("%d\n", sizeof(&arr + 1));    //4
 	//printf("%d\n", sizeof(&arr[0] + 1));    //4
-	//printf("%d\n", strlen(arr));    //Ëæ»úÖµ
-	//printf("%d\n", strlen(arr + 0));    //Ëæ»úÖµ
+	//printf("%d\n", strlen(arr));    //éšæœºå€¼
+	//printf("%d\n", strlen(arr + 0));    //éšæœºå€¼
 	//printf("%d\n", strlen(*arr));    //1
 	//printf("%d\n", strlen(arr[1]));    //1
-	//printf("%d\n", strlen(&arr));    //Ëæ»úÖµ
+	//printf("%d\n", strlen(&arr));    //éšæœºå€¼
 	//printf("%d\n", strlen(&arr + 1));    //4
 	//printf("%d\n", strlen(&arr[0] + 1));    //4
 
@@ -67,12 +67,12 @@ int main()
 	//printf("%d\n", strlen(&p + 1));    //4
 	//printf("%d\n", strlen(&p[0] + 1));    //4
 
-	//¶şÎ¬Êı×é
+	//äºŒç»´æ•°ç»„
 	//int a[3][4] = { 0 };
 	//printf("%d\n", sizeof(a));    //3*4*4 = 48
 	//printf("%d\n", sizeof(a[0][0]));    //4
-	//printf("%d\n", sizeof(a[0]));    //4£¬µÚÒ»ĞĞÊ×ÔªËØ
-	//printf("%d\n", sizeof(a[0] + 1));    //4£¬µÚ¶şĞĞÊ×ÔªËØ
+	//printf("%d\n", sizeof(a[0]));    //4ï¼Œç¬¬ä¸€è¡Œé¦–å…ƒç´ 
+	//printf("%d\n", sizeof(a[0] + 1));    //4ï¼Œç¬¬äºŒè¡Œé¦–å…ƒç´ 
 	//printf("%d\n", sizeof(*(a[0] + 1)));    //4
 	//printf("%d\n", sizeof(a + 1));    //4
 	//printf("%d\n", sizeof(*(a + 1)));    //4
