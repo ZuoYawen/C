@@ -1,2 +1,4 @@
-﻿  test.c
-  MineGame4-16.vcxproj -> C:\Users\DeLL\Desktop\study\code\MineGame4-16\Debug\MineGame4-16.exe
+﻿  game.c
+  test.c
+  正在生成代码...
+D:\Git\C_Language\MineGame4-16\MineGame4-16\test.c : fatal error C1090: PDB API 调用失败，错误代码“3”: D:\Git\C_Language\MineGame4-16\MineGame4-16\Debug\vc142.pdb
