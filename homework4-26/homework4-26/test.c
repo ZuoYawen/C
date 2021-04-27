@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-//测试机器字节序
+//测试机器字节序的程序
 int main()
 {
 	int a = 1;
