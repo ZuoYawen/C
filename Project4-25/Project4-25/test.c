@@ -193,93 +193,53 @@
 //}
 
 //杨氏矩阵:矩阵的每行从左到右是递增的，矩阵每列从上到下是递增的。请编写程序在杨氏矩阵中查找某个数字是否存在
-//int num_search1(int arr[ROW][COL],int num)
-//{
-//	//元素不在矩阵范围
-//	if (num < arr[0][0] || num > arr[ROW - 1][COL - 1])
-//	{
-//		return 0;
-//	}
-//	int i = 0;
-//	int j = 0;
-//	//从左上角最小的开始，不满足条件，每次往右1或下1
-//	while (i < COL)
-//	{
-//		//下1
-//		if (num > arr[i][j])
-//		{
-//			i++;
-//		}
-//		//下1大了，退回去右1
-//		if (num < arr[i][j])
-//		{
-//			i--;
-//			j++;
-//		}
-//		//找到最后一行，还是小了，往右找
-//		if (i == ROW - 1)
-//		{
-//			j++;
-//		}
-//		if (arr[i][j] == num)
-//		{
-//			return 1;
-//		}
-//	}
-//	return 0;
-//}
-//int num_search2(int arr[ROW][COL], int num)
-//{
-//	if (num > arr[ROW - 1][COL - 1] || num < arr[0][0])
-//	{
-//		return 0;
-//	}
-//	int i = 0;
-//	int j = 0;
-//	//从左上角最小的开始，不满足条件，每次往右1或下1
-//	while (i < COL)
-//	{
-//		//右1
-//		if (num > arr[i][j])
-//		{
-//			j++;
-//		}
-//		//右1大了，退回去下1
-//		if (num < arr[i][j])
-//		{
-//			j--;
-//			i++;
-//		}
-//		//找到最后一列，还是小了，往下找
-//		if (j == COL - 1)
-//		{
-//			i++;
-//		}
-//		if (num == arr[i][j])
-//		{
-//			return 1;
-//		}
-//	}
-//	return 0;
-//}
-//int main()
-//{
-//	int arr[ROW][COL] = { {0,7,14,21,28,35,42},
-//		                  {1,8,15,22,29,36,43},
-//		                  {2,9,16,23,30,37,44},
-//		                  {3,10,17,24,31,38,45} };
-//	int input = 0;
-//	printf("请输入要查找的值：");
-//	scanf("%d", &input);
-//	//int ret = num_search1(arr, input);
-//	int ret = num_search2(arr, input);
-//	if (ret)
-//	{
-//		printf("存在\n");
-//	}
-//	else
-//	{
-//		printf("不存在\n");
-//	}
-//	return 0;
-//}
+int num_search(int arr[ROW][COL], int* prow, int* pcol, int num)
+{
+	//从右上角开始
+	int i = 0;
+	int j = COL - 1;
+	while (i < ROW && j >= 0)
+	{
+		//下1，去一行
+		if (num > arr[i][j])
+		{
+			i++;
+		}
+		//左1，去一列
+		else if (num < arr[i][j])
+		{
+			j--;
+		}
+		else
+		{
+			*prow = i;
+			*pcol = j;
+			return 1;
+		}
+	}
+	*prow = -1;
+	*pcol = -1;
+	return 0;
+}
+int main()
+{
+	int arr[ROW][COL] = { {0,7,14,21,28,35,42},
+		                  {1,8,15,22,29,36,43},
+		                  {2,9,16,23,30,37,44},
+		                  {3,10,17,24,31,38,45} };
+	int x = ROW;
+	int y = COL;
+	int input = 0;
+	printf("请输入要查找的值：");
+	scanf("%d", &input);
+	int ret = num_search(arr, &x, &y, input);
+	if (ret)
+	{
+		printf("存在，坐标是(%d,%d)\n", x + 1, y + 1);
+	}
+	else
+	{
+		printf("不存在\n");
+	}
+	return 0;
+}
