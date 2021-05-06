@@ -154,7 +154,8 @@
 //}
 
 //判断e2是不是e1旋转得到的，是返回1,不是返回0。循环旋转e1与e2作比较，e2只做输入不改变，定义为const
-//int judge_spin(char* e1, const char* e2)
+//方法1：把所有可能的情况都列出来去比较，开销很大但是可行
+//int judge_spin1(char* e1, const char* e2)
 //{
 //	int sz = strlen(e1);
 //	int i = 0;
@@ -174,6 +175,8 @@
 //	}
 //	return 0;
 //}
+//方法2：利用strstr()函数直接找到字串，只需要注意判断极端情况就好
+//int judge_spin2(char* e1, const char* e2)
 //int main()
 //{
 //	char str1[100] = { 0 };
