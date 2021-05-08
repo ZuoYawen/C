@@ -155,45 +155,54 @@
 
 //判断e2是不是e1旋转得到的，是返回1,不是返回0。循环旋转e1与e2作比较，e2只做输入不改变，定义为const
 //方法1：把所有可能的情况都列出来去比较，开销很大但是可行
-//int judge_spin1(char* e1, const char* e2)
-//{
-//	int sz = strlen(e1);
-//	int i = 0;
-//	for (i = 0; i < sz; i++)    //可能旋转的元素个数
-//	{
-//		char tmp = e1[0];
-//		int j = 0;
-//		for (j = 0; j < sz - 1; j++)
-//		{
-//			e1[j] = e1[j + 1];
-//		}
-//		e1[sz - 1] = tmp;
-//		if (strcmp(e1, e2) == 0)
-//		{
-//			return 1;
-//		}
-//	}
-//	return 0;
-//}
-//方法2：利用strstr()函数直接找到字串，只需要注意判断极端情况就好
-//int judge_spin2(char* e1, const char* e2)
-//int main()
-//{
-//	char str1[100] = { 0 };
-//	char str2[100] = { 0 };
-//	printf("请输入要判断的字符串：\n");
-//	scanf("%s%s", str1, str2);
-//	int ret = judge_spin(str1, str2);
-//	if (ret)
-//	{
-//		printf("旋转得到的。\n");
-//	}
-//	else
-//	{
-//		printf("不是旋转得到的。\n");
-//	}
-//	return 0;
-//}
+int judge_spin1(char* e1, const char* e2)
+{
+	int sz = strlen(e1);
+	int i = 0;
+	for (i = 0; i < sz; i++)    //可能旋转的元素个数
+	{
+		char tmp = e1[0];
+		int j = 0;
+		for (j = 0; j < sz - 1; j++)
+		{
+			e1[j] = e1[j + 1];
+		}
+		e1[sz - 1] = tmp;
+		if (strcmp(e1, e2) == 0)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+//方法2：利用strncat()函数构造一个新的字符串，通过strstr()函数直接找到子字串，能找到说明就是旋转得到的
+int judge_spin2(char* e1, const char* e2)
+{
+	int sz = strlen(e1);
+	char *str = strncat(e1, e1, sz);
+	if(strstr(str,e2) != NULL)
+		{
+			return 1;
+		}
+	return 0;
+}
+int main()
+{
+	char str1[100] = { 0 };
+	char str2[100] = { 0 };
+	printf("请输入要判断的字符串：\n");
+	scanf("%s%s", str1, str2);
+	int ret = judge_spin2(str1, str2);
+	if (ret)
+	{
+		printf("旋转得到的。\n");
+	}
+	else
+	{
+		printf("不是旋转得到的。\n");
+	}
+	return 0;
+}
 
 //杨氏矩阵:矩阵的每行从左到右是递增的，矩阵每列从上到下是递增的。请编写程序在杨氏矩阵中查找某个数字是否存在
 int num_search(int arr[ROW][COL], int* prow, int* pcol, int num)
