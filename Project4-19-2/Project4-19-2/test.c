@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+//sizeof(数组名)表示整个数组地址，做形参时就只表示数组首元素地址
 int func(char str[100])
 {
 	return sizeof(str);
