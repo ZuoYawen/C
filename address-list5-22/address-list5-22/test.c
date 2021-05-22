@@ -4,9 +4,9 @@ void menu()
 {
 	printf(" _________________________________\n");
 	printf("|  1.add     2.del      3.search  |\n");
-	printf("|  4.modify    5.sort     6.show  |\n");
-	printf("|            0.exit               |\n");
-	printf(" ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª-\n");
+	printf("|  4.modify  5.sort     6.show    |\n");
+	printf("|        7.clear   0.exit         |\n");
+	printf(" â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”-\n");
 	return;
 }
 enum menu
@@ -17,11 +17,12 @@ SEARCH = 3,
 MODIFY = 4,
 SORT = 5,
 SHOW = 6,
+CLEAR = 7,
 EXIT = 0
 };
 int main()
 {
-	//±äÁ¿³õÊ¼»¯
+	//å˜é‡åˆå§‹åŒ–
 	people data[NUM] = { 0 };
 	int input = 0;
 	contact c = { 0 };
@@ -34,31 +35,34 @@ int main()
 		switch (input)
 		{
 		    case ADD:
-			    add(&c);
-			    break;
+			add(&c);
+			break;
 		    case DEL:
 		    	del(&c);
 		    	break;
 		    case SEARCH:
-			   search(&c);
-			    break;
+			search(&c);
+			break;
 		    case MODIFY:
-			    modify(&c);
-			    break;
-			case SORT:
-				sort(&c);
-				break;
+			modify(&c);
+			break;
+		    case SORT:
+			sort(&c);
+			break;
 		    case SHOW:
-			    show(&c);
-			    break;
+			show(&c);
+			break;
+		    case CLEAR:
+			clear(&c);
+			break;
 		    case EXIT:
-				printf("Exited,thanks for use!\n");
-				printf("\n");
-			    break;
-			default:
-				printf("Please input correct num!\n");
-				printf("\n");
-				break;
+			printf("Exited,thanks for use!\n");
+			printf("\n");
+			break;
+		    default:
+			printf("Please input correct num!\n");
+			printf("\n");
+			break;
 		}
 	} while (input);
 	return 0;
