@@ -22,11 +22,11 @@ void add(contact* c)
 }
 static int searchByName(contact* c, char* name)
 {
-	//ÕâÀï²»ÊµÏÖÅĞ¿Õ£¬¾ßÌåº¯ÊıÔÙÈ¥ÊµÏÖ£¬ÕâÖ»ÊÇ¸ö¾²Ì¬º¯Êı
+	//è¿™é‡Œä¸å®ç°åˆ¤ç©ºï¼Œå…·ä½“å‡½æ•°å†å»å®ç°ï¼Œè¿™åªæ˜¯ä¸ªé™æ€å‡½æ•°
 	int i = 0;
 	for (i = 0; i < c->num; i++)
 	{
-		if (strcmp(c->data[i].name, name) == 0)//±È½Ï×Ö·û´®²»¿ÉÒÔÓÃ==£¬ĞèÒª±ÈÖµ¶ø²»ÊÇÄÚ´æµØÖ·
+		if (strcmp(c->data[i].name, name) == 0)//æ¯”è¾ƒå­—ç¬¦ä¸²ä¸å¯ä»¥ç”¨==ï¼Œéœ€è¦æ¯”å€¼è€Œä¸æ˜¯å†…å­˜åœ°å€
 		{
 			return i;
 		}
@@ -58,7 +58,7 @@ void del(contact* c)
 			{
 				c->data[i] = c->data[i + 1];
 			}
-			c->num--;//²»ÄÜÍü¼Ç£¡£¡£¡
+			c->num--;//ä¸èƒ½å¿˜è®°ï¼ï¼ï¼
 			printf("Delete successfully!\n");
 			printf("\n");
 		}
@@ -126,12 +126,12 @@ void modify(contact* c)
 }
 void sort(contact* c)
 {
-	//ÕâÀï¼ÙÉè×ö°´Ãû×ÖµÄÉıĞòÅÅÁĞ
-	int i = 0;//ÌËÊı
+	//è¿™é‡Œå‡è®¾åšæŒ‰åå­—çš„å‡åºæ’åˆ—
+	int i = 0;//è¶Ÿæ•°
 	for (i = 0; i < c->num - 1; i++)
 	{
-		int flag = 0;//×öÓÅ»¯£¬Èç¹û½ÓÏÂÀ´µÄÒ»ÌË²»ĞèÒª½»»»ÁË£¬Ö¤Ã÷ÒÑ¾­ÅÅºÃÁË
-		int j = 0;//Ã¿ÌËµÄ±È½Ï
+		int flag = 0;//åšä¼˜åŒ–ï¼Œå¦‚æœæ¥ä¸‹æ¥çš„ä¸€è¶Ÿä¸éœ€è¦äº¤æ¢äº†ï¼Œè¯æ˜å·²ç»æ’å¥½äº†
+		int j = 0;//æ¯è¶Ÿçš„æ¯”è¾ƒ
 		for (j = 0; j < c->num - i - 1; j++)
 		{
 			if (strcmp(c->data[j].name, c->data[j + 1].name) > 0)
@@ -160,6 +160,13 @@ void show(contact* c)
 		printf("%-5s %-7s %-5d %-12s %-10s %-11s\n", c->data[i].name, c->data[i].sex, c->data[i].age,
 			c->data[i].phone, c->data[i].addr, c->data[i].qq);
 	}
+	printf("\n");
+	return;
+}
+void clear(contact* c)
+{
+	memset(c, 0, sizeof(*c));
+	printf("Clear sucessfully!\n");
 	printf("\n");
 	return;
 }
