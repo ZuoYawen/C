@@ -52,33 +52,41 @@
 //	}
 //	return 0;
 //}
-void* mem_move(void* dest, const void* src, size_t count)
-{
-	assert(dest);
-	assert(src);
-	void* ret = dest;
-	if (dest < src)    //��ǰ��󿽱�
-	{
-		while (count--)
-		{
-			*(char*)dest = *(char*)src;
-			((char*)dest)++;
-			((char*)src)++;
-		}
-	}
-	else    //�Ӻ���ǰ����
-	{
-		while (count--)
-		{
-			*((char*)dest + count) = *((char*)src + count);
-		}
-	}
-	return ret;
-}
+//void* mem_move(void* dest, const void* src, size_t count)
+//{
+//	assert(dest);
+//	assert(src);
+//	void* ret = dest;
+//	//从前往后拷贝，和memcpy一样
+//	if (dest < src)
+//	{
+//		while (count--)
+//		{
+//			*((char*)dest)++ = *((char*)src)++;			
+//		}
+//	}
+//	//其余情况都采用从后往前拷贝
+//	else
+//	{
+//		while (count--)
+//		{
+//			*((char*)dest + count) = *((char*)src + count);
+//		}
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char str[50] = "abcdefg hijkiloveyou";
+//	mem_move(str, str + 12, 7);
+//	puts(str);
+//	return 0;
+//}
 int main()
 {
-	char str[30] = "abcdefg hijkiloveyou";
-	mem_move(str, str + 12, 9);
+	char str[30];
+	memset(str, 'z', 3);
+	str[5] = 0;
 	puts(str);
 	return 0;
 }
