@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <memory.h>
 
 #define NAME 20
 #define SEX 5 
@@ -8,7 +9,7 @@
 #define QQ 11
 #define NUM 100
 
-//¶ÔÁªÏµÈË½á¹¹ÌåÖØ¶¨Òå£¬·½±ãºóÃæÊ¹ÓÃ
+//å¯¹è”ç³»äººç»“æ„ä½“é‡å®šä¹‰ï¼Œæ–¹ä¾¿åé¢ä½¿ç”¨
 typedef struct people
 {
 	char name[NAME];
@@ -18,7 +19,7 @@ typedef struct people
 	char addr[ADDR];
 	char qq[QQ];
 }people;
-//¶ÔÍ¨Ñ¶Â¼½á¹¹ÌåÖØ¶¨Òå£¬·½±ãºóÃæÊ¹ÓÃ
+//å¯¹é€šè®¯å½•ç»“æ„ä½“é‡å®šä¹‰ï¼Œæ–¹ä¾¿åé¢ä½¿ç”¨
 typedef struct contact
 {
 	people data[NUM];
@@ -31,3 +32,4 @@ void search(contact* c);
 void modify(contact* c);
 void sort(contact* c);
 void show(contact* c);
+void clear(contact* c);
