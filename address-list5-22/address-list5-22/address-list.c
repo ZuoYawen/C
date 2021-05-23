@@ -139,8 +139,8 @@ void sort(contact* c)
 				people tmp = c->data[j];
 				c->data[j] = c->data[j + 1];
 				c->data[j + 1] = tmp;
+		                flag = 1;
 			}
-			flag = 1;
 		}
 		if (flag == 0)
 		{
