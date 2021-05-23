@@ -2,26 +2,26 @@
 #include "contact.h"
 void add(contact* c)
 {
-	printf("ÇëÊäÈëĞèÒªÌí¼ÓµÄÁªÏµÈËĞÅÏ¢(ĞÕÃû£¬ĞÔ±ğ£¬ÄêÁä£¬µç»°£¬µØÖ·):\n");
+	printf("è¯·è¾“å…¥éœ€è¦æ·»åŠ çš„è”ç³»äººä¿¡æ¯(å§“åï¼Œæ€§åˆ«ï¼Œå¹´é¾„ï¼Œç”µè¯ï¼Œåœ°å€):\n");
 	scanf("%s %s %d %s %s", c->data[c->num].name, c->data[c->num].sex, &(c->data[c->num].age),
 		                    c->data[c->num].phone, c->data[c->num].addr);
 	c->num++;
-	printf("Ìí¼Ó³É¹¦£¡\n");
+	printf("æ·»åŠ æˆåŠŸï¼\n");
 	return;
 }
 void show(contact* c)
 {
-	printf("%-8s %-5s %-5s %-11s %-10s\n","ĞÕÃû","ĞÔ±ğ","ÄêÁä","µç»°","µØÖ·");
+	printf("%-8s %-5s %-5s %-11s %-10s\n","å§“å","æ€§åˆ«","å¹´é¾„","ç”µè¯","åœ°å€");
 	int i = 0;
 	for (i = 0; i < c->num; i++)
 	{
 		printf("%-8s %-5s %-5d %-11s %-10s\n", c->data[i].name, c->data[i].sex, c->data[i].age,
 			                                   c->data[i].phone, c->data[i].addr);
 	}
-	printf("ÏÔÊ¾Íê±Ï£¡\n");
+	printf("æ˜¾ç¤ºå®Œæ¯•ï¼\n");
 	return;
 }
-static int findByName(contact* c, char* name)//Í¨¹ıÃû×ÖÑ°ÕÒÁªÏµÈË£¬·µ»ØÊı×éÏÂ±ê
+static int findByName(contact* c, char* name)//é€šè¿‡åå­—å¯»æ‰¾è”ç³»äººï¼Œè¿”å›æ•°ç»„ä¸‹æ ‡
 {
 	int i = 0;
 	for (i = 0; i < c->num; i++)
@@ -35,18 +35,18 @@ void del(contact* c)
 {
 	if (c->num == 0)
 	{
-		printf("ÄúµÄÍ¨Ñ¶Â¼ÏÖÔÚ»¹Ã»ÓĞÁªÏµÈË£¬ÇëÏÈÌí¼Óà¸£¡\n");
+		printf("æ‚¨çš„é€šè®¯å½•ç°åœ¨è¿˜æ²¡æœ‰è”ç³»äººï¼Œè¯·å…ˆæ·»åŠ å–”ï¼\n");
 	}
 	else
 	{
-		printf("ÇëÊäÈëĞèÒªÉ¾³ıµÄÁªÏµÈËĞÕÃû£º");
+		printf("è¯·è¾“å…¥éœ€è¦åˆ é™¤çš„è”ç³»äººå§“åï¼š");
 		char name[NAME];
 		scanf("%s", name);
 		int ret = findByName(c, name);
 		printf("\n");
 		if (ret == -1)
 		{
-			printf("¶Ô²»Æğ£¬²éÎŞ´ËÈËÄØ£¡\n");
+			printf("å¯¹ä¸èµ·ï¼ŒæŸ¥æ— æ­¤äººå‘¢ï¼\n");
 		}
 		else
 		{
@@ -56,7 +56,7 @@ void del(contact* c)
 				c->data[i] = c->data[i + 1];
 			}
 			c->num--;
-			printf("É¾³ıÍê±Ï£¡\n");
+			printf("åˆ é™¤å®Œæ¯•ï¼\n");
 		}
 	}
 	return;
@@ -65,24 +65,24 @@ void search(contact* c)
 {
 	if (c->num == 0)
 	{
-		printf("ÄúµÄÍ¨Ñ¶Â¼ÏÖÔÚ»¹Ã»ÓĞÁªÏµÈË£¬ÇëÏÈÌí¼Óà¸£¡\n");
+		printf("æ‚¨çš„é€šè®¯å½•ç°åœ¨è¿˜æ²¡æœ‰è”ç³»äººï¼Œè¯·å…ˆæ·»åŠ å–”ï¼\n");
 	}
 	else
 	{
-		printf("ÇëÊäÈëĞèÒª²éÕÒµÄÁªÏµÈËĞÕÃû£º");
+		printf("è¯·è¾“å…¥éœ€è¦æŸ¥æ‰¾çš„è”ç³»äººå§“åï¼š");
 		char name[NAME];
 		scanf("%s", name);
 		int ret = findByName(c, name);
 		printf("\n");
 		if (ret == -1)
 		{
-			printf("¶Ô²»Æğ£¬²éÎŞ´ËÈËÄØ£¡\n");
+			printf("å¯¹ä¸èµ·ï¼ŒæŸ¥æ— æ­¤äººå‘¢ï¼\n");
 		}
 		else
 		{
-			printf("ÍÛÅ¶£¡ÕÒµ½ÁË£¡\n");
+			printf("å“‡å“¦ï¼æ‰¾åˆ°äº†ï¼\n");
 			printf("\n");
-			printf("%-8s %-5s %-5s %-11s %-10s\n", "ĞÕÃû", "ĞÔ±ğ", "ÄêÁä", "µç»°", "µØÖ·");
+			printf("%-8s %-5s %-5s %-11s %-10s\n", "å§“å", "æ€§åˆ«", "å¹´é¾„", "ç”µè¯", "åœ°å€");
 			printf("%-8s %-5s %-5d %-11s %-10s\n", c->data[ret].name, c->data[ret].sex, c->data[ret].age,
 				                                   c->data[ret].phone, c->data[ret].addr);
 		}
@@ -93,33 +93,33 @@ void modify(contact* c)
 {
 	if (c->num == 0)
 	{
-		printf("ÄúµÄÍ¨Ñ¶Â¼ÏÖÔÚ»¹Ã»ÓĞÁªÏµÈË£¬ÇëÏÈÌí¼Óà¸£¡\n");
+		printf("æ‚¨çš„é€šè®¯å½•ç°åœ¨è¿˜æ²¡æœ‰è”ç³»äººï¼Œè¯·å…ˆæ·»åŠ å–”ï¼\n");
 	}
 	else
 	{
-		printf("ÇëÊäÈëĞèÒªĞŞ¸ÄµÄÁªÏµÈËĞÕÃû£º");
+		printf("è¯·è¾“å…¥éœ€è¦ä¿®æ”¹çš„è”ç³»äººå§“åï¼š");
 		char name[NAME];
 		scanf("%s", name);
 		int ret = findByName(c, name);
 		printf("\n");
 		if (ret == -1)
 		{
-			printf("¶Ô²»Æğ£¬²éÎŞ´ËÈËÄØ£¡\n");
+			printf("å¯¹ä¸èµ·ï¼ŒæŸ¥æ— æ­¤äººå‘¢ï¼\n");
 		}
 		else
 		{
-			printf("ÇëÊäÈëĞŞ¸ÄºóµÄÁªÏµÈËĞÅÏ¢(ĞÕÃû£¬ĞÔ±ğ£¬ÄêÁä£¬µç»°£¬µØÖ·)£º\n");
+			printf("è¯·è¾“å…¥ä¿®æ”¹åçš„è”ç³»äººä¿¡æ¯(å§“åï¼Œæ€§åˆ«ï¼Œå¹´é¾„ï¼Œç”µè¯ï¼Œåœ°å€)ï¼š\n");
 			scanf("%s %s %d %s %s", c->data[ret].name, c->data[ret].sex,&( c->data[ret].age),
 				                      c->data[ret].phone, c->data[ret].addr);
-			printf("ĞŞ¸Ä³É¹¦£¡\n");
+			printf("ä¿®æ”¹æˆåŠŸï¼\n");
 		}
 	}
 	return;
 }
 void clear(contact* c)
 {
-	memset(c, 0, sizeof(*c));//cÊÇÖ¸Õë£¬²»ÊÇÊı×é
-	printf("Çå¿ÕÍê±Ï£¡\n");
+	memset(c, 0, sizeof(*c));//cæ˜¯æŒ‡é’ˆï¼Œä¸æ˜¯æ•°ç»„
+	printf("æ¸…ç©ºå®Œæ¯•ï¼\n");
 	return;
 }
 static void sortByName(contact* c)
@@ -127,14 +127,24 @@ static void sortByName(contact* c)
 	int i = 0;
 	for (i = 0; i < c->num - 1; i++)
 	{
-		if (strcmp(c->data[i].name, c->data[i + 1].name) < 0)
+		int flag = 0;
+		int j = 0;
+		for (j = 0; j < c->num - 1 - i; j++)
 		{
-			people tmp = c->data[i];
-			c->data[i] = c->data[i + 1];
-			c->data[i + 1] = tmp;
+			if (strcmp(c->data[j].name, c->data[j + 1].name) > 0)
+			{
+				people tmp = c->data[j];
+				c->data[j] = c->data[j + 1];
+				c->data[j + 1] = tmp;
+				flag = 1;
+			}
+		}
+		if (flag == 0)
+		{
+			break;
 		}
 	}
-	printf("°´Ãû×ÖÅÅĞòÍê±Ï£¡\n");
+	printf("æŒ‰åå­—æ’åºå®Œæ¯•ï¼\n");
 	return;
 }
 static void sortBySex(contact* c)
@@ -142,14 +152,24 @@ static void sortBySex(contact* c)
 	int i = 0;
 	for (i = 0; i < c->num - 1; i++)
 	{
-		if (strcmp(c->data[i].sex, c->data[i + 1].sex) < 0)
+		int flag = 0;
+		int j = 0;
+		for (j = 0; j < c->num - 1 - i; j++)
 		{
-			people tmp = c->data[i];
-			c->data[i] = c->data[i + 1];
-			c->data[i + 1] = tmp;
+			if (strcmp(c->data[i].sex, c->data[i + 1].sex) > 0)
+			{
+				people tmp = c->data[i];
+				c->data[i] = c->data[i + 1];
+				c->data[i + 1] = tmp;
+				flag = 1;
+			}
+		}
+		if (flag == 0)
+		{
+			break;
 		}
 	}
-	printf("°´ĞÔ±ğÅÅĞòÍê±Ï£¡\n");
+	printf("æŒ‰æ€§åˆ«æ’åºå®Œæ¯•ï¼\n");
 	return;
 }
 static void sortByAge(contact* c)
@@ -157,19 +177,29 @@ static void sortByAge(contact* c)
 	int i = 0;
 	for (i = 0; i < c->num - 1; i++)
 	{
-		if (c->data[i].age > c->data[i + 1].age)
+		int flag = 0;
+		int j = 0;
+		for (j = 0; j < c->num - 1 - i; j++)
 		{
-			people tmp = c->data[i];
-			c->data[i] = c->data[i + 1];
-			c->data[i + 1] = tmp;
+			if (c->data[i].age > c->data[i + 1].age)
+			{
+				people tmp = c->data[i];
+				c->data[i] = c->data[i + 1];
+				c->data[i + 1] = tmp;
+				flag = 1;
+			}
+		}
+		if (flag == 0)
+		{
+			break;
 		}
 	}
-	printf("°´ÄêÁäÅÅĞòÍê±Ï£¡\n");
+	printf("æŒ‰å¹´é¾„æ’åºå®Œæ¯•ï¼\n");
 	return;
 }
 void sort(contact* c)
 {
-	printf("ÇëÑ¡ÔñÅÅĞò·½Ê½¶ÔÓ¦µÄÊı×Ö£¨1.ĞÕÃû/2.ĞÔ±ğ/3.ÄêÁä£©£º");
+	printf("è¯·é€‰æ‹©æ’åºæ–¹å¼å¯¹åº”çš„æ•°å­—ï¼ˆ1.å§“å/2.æ€§åˆ«/3.å¹´é¾„ï¼‰ï¼š");
 	int sortnum = 0;
 	scanf("%d", &sortnum);
 	switch (sortnum)
@@ -184,7 +214,7 @@ void sort(contact* c)
 		sortByAge(c);
 		break;
 	default:
-		printf("ÇëÊäÈë¹æ¶¨Êı×Ö£º\n");
+		printf("è¯·è¾“å…¥è§„å®šæ•°å­—ï¼š\n");
 		break;
 	}
 	return;
