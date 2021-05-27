@@ -26,10 +26,11 @@ int main()
 {
 	int input = 0;
 	contact c = { 0 };
+	initContact(&c);
 	do
 	{
 		menu();
-		printf("ÇëÊäÈëÄãµÄÑ¡Ôñ£º");
+		printf("è¯·è¾“å…¥ä½ çš„é€‰æ‹©ï¼š");
 		scanf("%d", &input);
 		printf("\n");
 		switch (input)
@@ -56,12 +57,12 @@ int main()
 			clear(&c);
 			break;
 		case EXIT:
-			printf("¸ĞĞ»Ê¹ÓÃ£¬ÒÑÍË³ö£¡\n");
+			destoryContact(&c);
+			printf("æ„Ÿè°¢ä½¿ç”¨ï¼Œå·²é€€å‡ºï¼\n");
 			break;
 		default:
-			printf("ÊäÈë´íÎó£¬ÇëÊäÈëÕıÈ·µÄÊı×Ö£¡\n");
+			printf("è¾“å…¥é”™è¯¯ï¼Œè¯·è¾“å…¥æ­£ç¡®çš„æ•°å­—ï¼\n");
 		}
-	} 	
-	while (input);
+	} 	while (input);
 	return 0;
 }
