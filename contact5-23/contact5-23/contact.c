@@ -3,6 +3,23 @@
 void add(contact* c)
 {
 	assert(c);
+	if (c->num == c->mem)//空间已满，进行动态开辟
+	{
+		people* ptr = (people*)realloc(c->data, sizeof(people) * (DEFAULT + 5));
+		if (ptr != NULL)
+		{
+			c->data = ptr;
+			c->mem += 5;
+			ptr = NULL;
+			printf("您的通讯录已满，已开辟新的区域，您还可以再添加五位联系人喔！\n");
+			printf("\n");
+		}
+		else
+		{
+			perror("add::realloc");
+			return;
+		}
+	}
 	printf("请输入需要添加的联系人信息(姓名，性别，年龄，电话，地址):\n");
 	scanf("%s %s %d %s %s", c->data[c->num].name, c->data[c->num].sex, &(c->data[c->num].age),
 		c->data[c->num].phone, c->data[c->num].addr);
@@ -240,7 +257,15 @@ void initContact(contact* c)
 	if (c->data == NULL)
 	{
 		perror("initContact::malloc");
-		return;
 	}
-
+	return;
+}
+void destoryContact(contact* c)
+{
+	free(c->data);
+	c->data = NULL;
+	c->mem = 0;
+	c->num = 0;
+	printf("通讯录已销毁！");
+	return;
 }
