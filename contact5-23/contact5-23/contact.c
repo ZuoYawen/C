@@ -2,27 +2,48 @@
 #include "contact.h"
 void add(contact* c)
 {
+	assert(c);
+	if (c->num == c->mem)//空间已满，进行动态开辟
+	{
+		people* ptr = (people*)realloc(c->data, sizeof(people) * (DEFAULT + 5));
+		if (ptr != NULL)
+		{
+			c->data = ptr;
+			c->mem += 5;
+			ptr = NULL;
+			printf("您的通讯录已满，已开辟新的区域，您还可以再添加五位联系人喔！\n");
+			printf("\n");
+		}
+		else
+		{
+			perror("add::realloc");
+			return;
+		}
+	}
 	printf("请输入需要添加的联系人信息(姓名，性别，年龄，电话，地址):\n");
 	scanf("%s %s %d %s %s", c->data[c->num].name, c->data[c->num].sex, &(c->data[c->num].age),
-		                    c->data[c->num].phone, c->data[c->num].addr);
+		c->data[c->num].phone, c->data[c->num].addr);
 	c->num++;
 	printf("添加成功！\n");
 	return;
 }
 void show(contact* c)
 {
-	printf("%-8s %-5s %-5s %-11s %-10s\n","姓名","性别","年龄","电话","地址");
+	assert(c);
+	printf("%-8s %-5s %-5s %-11s %-10s\n", "姓名", "性别", "年龄", "电话", "地址");
 	int i = 0;
 	for (i = 0; i < c->num; i++)
 	{
 		printf("%-8s %-5s %-5d %-11s %-10s\n", c->data[i].name, c->data[i].sex, c->data[i].age,
-			                                   c->data[i].phone, c->data[i].addr);
+			c->data[i].phone, c->data[i].addr);
 	}
 	printf("显示完毕！\n");
 	return;
 }
 static int findByName(contact* c, char* name)//通过名字寻找联系人，返回数组下标
 {
+	assert(c);
+	assert(name);
 	int i = 0;
 	for (i = 0; i < c->num; i++)
 	{
@@ -33,6 +54,7 @@ static int findByName(contact* c, char* name)//通过名字寻找联系人，返
 }
 void del(contact* c)
 {
+	assert(c);
 	if (c->num == 0)
 	{
 		printf("您的通讯录现在还没有联系人，请先添加喔！\n");
@@ -63,6 +85,7 @@ void del(contact* c)
 }
 void search(contact* c)
 {
+	assert(c);
 	if (c->num == 0)
 	{
 		printf("您的通讯录现在还没有联系人，请先添加喔！\n");
@@ -84,13 +107,14 @@ void search(contact* c)
 			printf("\n");
 			printf("%-8s %-5s %-5s %-11s %-10s\n", "姓名", "性别", "年龄", "电话", "地址");
 			printf("%-8s %-5s %-5d %-11s %-10s\n", c->data[ret].name, c->data[ret].sex, c->data[ret].age,
-				                                   c->data[ret].phone, c->data[ret].addr);
+				c->data[ret].phone, c->data[ret].addr);
 		}
 	}
 	return;
 }
 void modify(contact* c)
 {
+	assert(c);
 	if (c->num == 0)
 	{
 		printf("您的通讯录现在还没有联系人，请先添加喔！\n");
@@ -109,8 +133,8 @@ void modify(contact* c)
 		else
 		{
 			printf("请输入修改后的联系人信息(姓名，性别，年龄，电话，地址)：\n");
-			scanf("%s %s %d %s %s", c->data[ret].name, c->data[ret].sex,&( c->data[ret].age),
-				                      c->data[ret].phone, c->data[ret].addr);
+			scanf("%s %s %d %s %s", c->data[ret].name, c->data[ret].sex, &(c->data[ret].age),
+				c->data[ret].phone, c->data[ret].addr);
 			printf("修改成功！\n");
 		}
 	}
@@ -118,12 +142,14 @@ void modify(contact* c)
 }
 void clear(contact* c)
 {
+	assert(c);
 	memset(c, 0, sizeof(*c));//c是指针，不是数组
 	printf("清空完毕！\n");
 	return;
 }
 static void sortByName(contact* c)
 {
+	assert(c);
 	int i = 0;
 	for (i = 0; i < c->num - 1; i++)
 	{
@@ -149,6 +175,7 @@ static void sortByName(contact* c)
 }
 static void sortBySex(contact* c)
 {
+	assert(c);
 	int i = 0;
 	for (i = 0; i < c->num - 1; i++)
 	{
@@ -174,6 +201,7 @@ static void sortBySex(contact* c)
 }
 static void sortByAge(contact* c)
 {
+	assert(c);
 	int i = 0;
 	for (i = 0; i < c->num - 1; i++)
 	{
@@ -199,6 +227,7 @@ static void sortByAge(contact* c)
 }
 void sort(contact* c)
 {
+	assert(c);
 	printf("请选择排序方式对应的数字（1.姓名/2.性别/3.年龄）：");
 	int sortnum = 0;
 	scanf("%d", &sortnum);
@@ -217,5 +246,26 @@ void sort(contact* c)
 		printf("请输入规定数字：\n");
 		break;
 	}
+	return;
+}
+void initContact(contact* c)
+{
+	assert(c);
+	c->num = 0;
+	c->mem = DEFAULT;
+	c->data = (people*)malloc(DEFAULT * sizeof(people));
+	if (c->data == NULL)
+	{
+		perror("initContact::malloc");
+	}
+	return;
+}
+void destoryContact(contact* c)
+{
+	free(c->data);
+	c->data = NULL;
+	c->mem = 0;
+	c->num = 0;
+	printf("通讯录已销毁！");
 	return;
 }
