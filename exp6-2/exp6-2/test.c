@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
+#include <ctype.h>
 
 //跳过空格字符(ASCII码32)，遇上数字字符或者+、-才开始转换
 //遇上非数字字符结束,其他情况返回0
@@ -13,17 +14,17 @@
 //	int ret = 0;
 //	int flag = 0;
 //	while (*string)
-//	{
-//		if (*string == 32)//为空格
+//	{ 
+//		if (*string == ' ' || *string == '+')//为空格32或为正号43
 //		{
 //			string++;
 //		}
-//		else if (*string == 45)//为负
+//		else if (*string == '-')//为负45
 //		{
 //			flag = 1;
 //			string++;
 //		}
-//		else if (*string > 57 || *string < 48)
+//		else if (*string > '9' || *string < '0')
 //		{
 //			if (flag)
 //			{
@@ -36,7 +37,7 @@
 //		}
 //		else
 //		{
-//			ret = (ret * 10)+ (*string - 48);
+//			ret = (ret * 10)+ (*string - '0');
 //			string++;
 //		}
 //	}
@@ -49,14 +50,45 @@
 //		return ret;
 //	}
 //}
-//int main()
-//{
-//	char* a = " 123gh ";
-//	int b = a_to_i(a);
-//	int c = atoi(a);
-//	printf("%d  %d\n", b,c);
-//	return 0;
-//}
+//升级版2
+int a_to_i(char* str)
+{
+	//空指针
+	if (str == NULL)
+	{
+		return 0;
+	}
+	//空白字符或正号
+	while (isspace(*str) || *str == '+')
+	{
+		str++;
+	}
+	int flag = 1;
+	if (*str == '-')
+	{
+		flag = -1;
+		str++;
+	}
+	int ret = 0;
+	while (*str)
+	{
+		if (isdigit(*str) == 0)
+		{
+			break;
+		}
+		ret = ret * 10 + flag*(*str - '0');
+		str++;
+	}
+	return ret;
+}
+int main()
+{
+	char* a = " fsdh-122wg ";
+	int b = a_to_i(a);
+	int c = atoi(a);
+	printf("%d  %d\n", b,c);
+	return 0;
+}
 // 
 // 函数模拟实现
 // 
@@ -98,51 +130,51 @@
 // 
 //找单身狗：一个数组中只有两个数字是出现一次，其他所有数字都出现了两次。
 //编写一个函数找出这两个只出现一次的数字。
-void bubbleSort(int* arr, int num)//升序
-{
-	int i = 0;
-	for (i = 0; i < num - 1; i++)
-	{
-		int flag = 1;
-		int j = 0;
-		for (j = 0; j < num - i - 1; j++)
-		{
-			if (arr[j] > arr[j + 1])
-			{
-				int ret = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = ret;
-				flag = 0;
-			}
-		}
-		if (flag)
-		{
-			break;
-		}
-	}
-}
-void findSingle(int* arr, int num)
-{
-	assert(arr != NULL);
-	bubbleSort(arr, num);
-	int i = 0;
-	while (i < num)
-	{
-		if (arr[i] == arr[i + 1])
-		{
-			i += 2;
-		}
-		else
-		{
-			printf("Single:%d\n", arr[i]);
-			i++;
-		}
-	}
-	return;
-}
-int main()
-{
-	int arr[10] = { 1,2,3,4,5,8,3,4,1,2 };
-	findSingle(arr, 10);
-	return 0;
-}
+//void bubbleSort(int* arr, int num)//升序
+//{
+//	int i = 0;
+//	for (i = 0; i < num - 1; i++)
+//	{
+//		int flag = 1;
+//		int j = 0;
+//		for (j = 0; j < num - i - 1; j++)
+//		{
+//			if (arr[j] > arr[j + 1])
+//			{
+//				int ret = arr[j];
+//				arr[j] = arr[j + 1];
+//				arr[j + 1] = ret;
+//				flag = 0;
+//			}
+//		}
+//		if (flag)
+//		{
+//			break;
+//		}
+//	}
+//}
+//void findSingle(int* arr, int num)
+//{
+//	assert(arr != NULL);
+//	bubbleSort(arr, num);
+//	int i = 0;
+//	while (i < num)
+//	{
+//		if (arr[i] == arr[i + 1])
+//		{
+//			i += 2;
+//		}
+//		else
+//		{
+//			printf("Single:%d\n", arr[i]);
+//			i++;
+//		}
+//	}
+//	return;
+//}
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,8,3,4,1,2 };
+//	findSingle(arr, 10);
+//	return 0;
+//}
