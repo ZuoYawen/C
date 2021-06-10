@@ -1,9 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 
-//*************************************º¯ÊıÁ·Ï°
+//*************************************å‡½æ•°ç»ƒä¹ 
 
-//µİ¹éºÍ·Çµİ¹éÊµÏÖ¼ÆËã·Ç¸ºÕûÊı×é³ÉÊı×ÖÖ®ºÍ
+//é€’å½’å’Œéé€’å½’å®ç°è®¡ç®—éè´Ÿæ•´æ•°ç»„æˆæ•°å­—ä¹‹å’Œ
 
 //int rec_add(int num) {
 //	if (num > 9) {
@@ -27,11 +27,11 @@
 //int main() {
 //	int input = 0;
 //	scanf("%d", &input);
-//	printf("ÊäÈëµÄÊı×ÖÖ®ºÍÊÇ£º%d\n",rec_add(input));
-//	printf("ÊäÈëµÄÊı×ÖÖ®ºÍÊÇ£º%d\n", no_rec_add(input));
+//	printf("è¾“å…¥çš„æ•°å­—ä¹‹å’Œæ˜¯ï¼š%d\n",rec_add(input));
+//	printf("è¾“å…¥çš„æ•°å­—ä¹‹å’Œæ˜¯ï¼š%d\n", no_rec_add(input));
 //}
 
-//µİ¹éÊµÏÖnµÄk´Î·½
+//é€’å½’å®ç°nçš„kæ¬¡æ–¹
 
 //double power(double n, double k) {
 //	if (n == 0) {
@@ -45,23 +45,23 @@
 //		return 1;
 //	}
 //	if(k < 0){ 
-//		return 1 / power(n, -k );    //·ÖÄ¸Îª1±íÊ¾ÒÑ¾­´Î·½¹ıÒ»´Î£¬ËùÒÔµİ¹éµÄÊ±ºò²»ÓÃÔÙ¸ø´ÎÊı¼õÒ»
+//		return 1 / power(n, -k );    //åˆ†æ¯ä¸º1è¡¨ç¤ºå·²ç»æ¬¡æ–¹è¿‡ä¸€æ¬¡ï¼Œæ‰€ä»¥é€’å½’çš„æ—¶å€™ä¸ç”¨å†ç»™æ¬¡æ•°å‡ä¸€
 //	}
 //}
 //int main() {
 //	double n = 0;
 //	double k = 0;
 //	double result = 0;
-//	printf("ÒÀ´ÎÊäÈëµ×Êı£¨n£©ºÍÃİ£¨k£©:");
-//	scanf("%lf %lf", &n, &k);    //ÊäÈëdoubleĞÍÊı¾İ(8×Ö½Ú)ÓÃ%lf£¬floatĞÍÊı¾İ£¨4×Ö½Ú£©ÓÃ%f
+//	printf("ä¾æ¬¡è¾“å…¥åº•æ•°ï¼ˆnï¼‰å’Œå¹‚ï¼ˆkï¼‰:");
+//	scanf("%lf %lf", &n, &k);    //è¾“å…¥doubleå‹æ•°æ®(8å­—èŠ‚)ç”¨%lfï¼Œfloatå‹æ•°æ®ï¼ˆ4å­—èŠ‚ï¼‰ç”¨%f
 //	result = power(n, k);
-//	printf("½á¹ûÊÇ£º%.3f\n",result);    //Êä³öÊ±²»×öÇø·Ö
+//	printf("ç»“æœæ˜¯ï¼š%.3f\n",result);    //è¾“å‡ºæ—¶ä¸åšåŒºåˆ†
 //	return 0;
 //}
 
-//ÓÃµİ¹éºÍ·Çµİ¹éµÄ·½Ê½Çóì³²¨ÄÇÆõÊıÁĞ
+//ç”¨é€’å½’å’Œéé€’å½’çš„æ–¹å¼æ±‚æ–æ³¢é‚£å¥‘æ•°åˆ—
 
-//int rec_fab(int n)    //µİ¹é·½Ê½
+//int rec_fab(int n)    //é€’å½’æ–¹å¼
 //{
 //	if (n <= 2) {
 //		return 1;
@@ -70,8 +70,8 @@
 //		return rec_fab(n - 1) + rec_fab(n - 2);
 //	}
 //}
-//int no_rec_fab(int n)    //·Çµİ¹é·½Ê½
-//{    //×¢Òâ°ÑÇø¼ä±íÊ¾Íê£¡£¡
+//int no_rec_fab(int n)    //éé€’å½’æ–¹å¼
+//{    //æ³¨æ„æŠŠåŒºé—´è¡¨ç¤ºå®Œï¼ï¼
 //	int result = 1;
 //	int result_pre = 1;
 //	int result_pre_pre = 1;
@@ -89,13 +89,13 @@
 //int main(){
 //	int input = 0;
 //	scanf("%d", &input);
-//	printf("ì³²¨ÄÇÆõÊıÁĞµÄÖµÎª£º%d\n", rec_fab(input));
-//	printf("ì³²¨ÄÇÆõÊıÁĞµÄÖµÎª£º%d\n", no_rec_fab(input));
+//	printf("æ–æ³¢é‚£å¥‘æ•°åˆ—çš„å€¼ä¸ºï¼š%d\n", rec_fab(input));
+//	printf("æ–æ³¢é‚£å¥‘æ•°åˆ—çš„å€¼ä¸ºï¼š%d\n", no_rec_fab(input));
 //}
 
-//ÓÃµİ¹éºÍ·Çµİ¹éµÄ·½Ê½Ä£Äâstrlenº¯Êı
+//ç”¨é€’å½’å’Œéé€’å½’çš„æ–¹å¼æ¨¡æ‹Ÿstrlenå‡½æ•°
 
-//int rec_strlen(char * ch)    //µİ¹é·½Ê½
+//int rec_strlen(char * ch)    //é€’å½’æ–¹å¼
 //{
 //	if (*ch == '\0')
 //	{
@@ -106,13 +106,13 @@
 //		return rec_strlen(ch + 1) + 1;
 //	}
 //}
-//int no_rec_strlen(char* ch)    //·Çµİ¹é·½Ê½
+//int no_rec_strlen(char* ch)    //éé€’å½’æ–¹å¼
 //{
 //	int count = 0;
 //	while (*ch != '\0')
 //	{
 //		count += 1;
-//		ch = ch + 1;    //µØÖ·µÄ¼Ó¼õ
+//		ch = ch + 1;    //åœ°å€çš„åŠ å‡
 //	}
 //	return count;
 //}
@@ -120,8 +120,7 @@
 //{
 //	char str[20] = {"zuo"};
 //	int result = 0;
-//	printf("×Ö·û´®³¤¶ÈÎª£º%d\n", rec_strlen(str));
-//	printf("×Ö·û´®³¤¶ÈÎª£º%d\n", no_rec_strlen(str));
+//	printf("å­—ç¬¦ä¸²é•¿åº¦ä¸ºï¼š%d\n", rec_strlen(str));
+//	printf("å­—ç¬¦ä¸²é•¿åº¦ä¸ºï¼š%d\n", no_rec_strlen(str));
 //	return 0;
 //}
-
