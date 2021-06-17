@@ -51,10 +51,15 @@
 //	}
 //}
 //升级版2
+enum State
+{
+	NORMAL,
+	ABMORMAL
+}state = ABMORMAL;
 int a_to_i(char* str)
 {
 	//空指针
-	if (str == NULL)
+	if (str == NULL || *str == "\0")
 	{
 		return 0;
 	}
@@ -70,12 +75,8 @@ int a_to_i(char* str)
 		str++;
 	}
 	int ret = 0;
-	while (*str)
+	while (isdigit(*str))
 	{
-		if (isdigit(*str) == 0)
-		{
-			break;
-		}
 		ret = ret * 10 + flag*(*str - '0');
 		str++;
 	}
