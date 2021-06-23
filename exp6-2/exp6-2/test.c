@@ -54,8 +54,8 @@
 enum State
 {
 	NORMAL,
-	ABMORMAL
-}state = ABMORMAL;
+	ABNORMAL
+}state = ABNORMAL;
 int a_to_i(char* str)
 {
 	//空指针
@@ -74,17 +74,27 @@ int a_to_i(char* str)
 		flag = -1;
 		str++;
 	}
-	int ret = 0;
+	long long ret = 0;
 	while (isdigit(*str))
 	{
-		ret = ret * 10 + flag*(*str - '0');
+		ret = ret * 10 + flag * (*str - '0');
+		if (ret > INT_MAX || ret < INT_MIN)
+		{
+			ret = 0;
+			return ret;
+		}
 		str++;
+	}
+	if (*str == '\0')
+	{
+		state = NORMAL;
+		return ret;
 	}
 	return ret;
 }
 int main()
 {
-	char* a = " fsdh-122wg ";
+	char* a = " 66666668888888888888888 ";
 	int b = a_to_i(a);
 	int c = atoi(a);
 	printf("%d  %d\n", b,c);
